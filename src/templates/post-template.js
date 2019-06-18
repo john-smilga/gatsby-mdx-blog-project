@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-mdx"
 import Image from "gatsby-image"
-
+import Layout from "../components/layout"
 const PostTemplate = ({ data }) => {
   const { title, date, author, image } = data.mdx.frontmatter
   const { body } = data.mdx.code
@@ -12,21 +12,23 @@ const PostTemplate = ({ data }) => {
   console.log(body)
 
   return (
-    <section className={styles.template}>
-      <Link to="/" className={styles.link}>
-        back to all posts
-      </Link>
-      <div className={styles.info}>
-        <h1>{title}</h1>
-        <h4>
-          <span>by {author}</span> / <span>{date}</span>
-        </h4>
-      </div>
-      <Image fluid={img} />
-      <div className={styles.content}>
-        <MDXRenderer>{body}</MDXRenderer>
-      </div>
-    </section>
+    <Layout>
+      <section className={styles.template}>
+        <Link to="/" className={styles.link}>
+          back to all posts
+        </Link>
+        <div className={styles.info}>
+          <h1>{title}</h1>
+          <h4>
+            <span>by {author}</span> / <span>{date}</span>
+          </h4>
+        </div>
+        <Image fluid={img} />
+        <div className={styles.content}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
+      </section>
+    </Layout>
   )
 }
 
