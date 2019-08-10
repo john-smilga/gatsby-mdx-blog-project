@@ -2,12 +2,12 @@ import React from "react"
 import styles from "../css/postTemplate.module.css"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-mdx"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import Image from "gatsby-image"
 import Layout from "../components/layout"
 const PostTemplate = ({ data }) => {
   const { title, date, author, image } = data.mdx.frontmatter
-  const { body } = data.mdx.code
+  const { body } = data.mdx
   const img = image.childImageSharp.fluid
   console.log(body)
 
@@ -47,9 +47,7 @@ export const query = graphql`
           }
         }
       }
-      code {
-        body
-      }
+      body
     }
   }
 `
